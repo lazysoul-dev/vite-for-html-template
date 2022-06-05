@@ -2,8 +2,6 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
 import vue from '@vitejs/plugin-vue'
-import legacy from '@vitejs/plugin-legacy'
-import handlebars from 'vite-plugin-handlebars'
 
 export default defineConfig({
   test: {
@@ -12,19 +10,17 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    handlebars({
-      partialDirectory: resolve(__dirname, 'pages/partials'),
-    }),
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
   ],
+  root: './',
+  server: {
+    base: './',
+  },
   build: {
     rollupOptions: {
-      input: [
-        resolve(__dirname, 'pages/index.html'),
-        resolve(__dirname, 'pages/about.html'),
-      ],
+      input: resolve(__dirname, './src/main.js'),
+      output: {
+        entryFileNames: '[name].js',
+      },
     },
   },
 })

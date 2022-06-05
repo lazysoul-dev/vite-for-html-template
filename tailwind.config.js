@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    './pages/**/*.html',
-    './src/**/*.{vue,html,js}',
+    './**/*.{tt,php,html}',
+    './src/**/*.{vue,html,js,ts}',
   ],
   prefix: 'app-',
   theme: {
